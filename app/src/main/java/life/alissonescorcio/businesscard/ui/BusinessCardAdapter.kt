@@ -13,7 +13,7 @@ import life.alissonescorcio.businesscard.databinding.ItemBusinessCardBinding
 class BusinessCardAdapter :
     ListAdapter<BusinessCard, BusinessCardAdapter.ViewHolder>(DiffCallBack()) {
 
-        var listenerShare: (View) -> Unit = {}
+    var listenerShare: (View) -> Unit = {}
 
     inner class ViewHolder(
         private val binding: ItemBusinessCardBinding
