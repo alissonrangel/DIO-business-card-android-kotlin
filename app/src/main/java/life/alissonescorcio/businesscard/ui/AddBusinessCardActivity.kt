@@ -16,6 +16,7 @@ import android.widget.CheckBox
 import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import vadiole.colorpicker.ColorModel
 import vadiole.colorpicker.ColorPickerDialog
 
@@ -47,9 +48,9 @@ class AddBusinessCardActivity : AppCompatActivity() {
         codigoCor = 0
         insertListeners()
 
-        binding.previewSelectedColor.setBackgroundColor(currentColor)
+        //binding.previewSelectedColor.setBackgroundColor(currentColor)
 
-        val colorView = binding.previewSelectedColor
+        //val colorView = binding.previewSelectedColor
         val pickColor = binding.btColorPicker
         //val useAlpha = findViewById<CheckBox>(R.id.checkbox_use_alpha)
         //val colorModelSwitchEnabled = findViewById<CheckBox>(R.id.chackbox_enabled_switch)
@@ -66,7 +67,8 @@ class AddBusinessCardActivity : AppCompatActivity() {
                 currentColor = color
 
                 //  set background color to view result
-                colorView.setBackgroundColor(color)
+                //colorView.setBackgroundColor(color)
+                binding.mcvContent.setCardBackgroundColor(color)
             }
 
             colorPicker?.setOnSwitchColorModelListener { colorModel ->
@@ -76,8 +78,8 @@ class AddBusinessCardActivity : AppCompatActivity() {
 
 
         //  set current color as background
-        colorView.setBackgroundColor(currentColor)
-
+        //colorView.setBackgroundColor(currentColor)
+        binding.mcvContent.setCardBackgroundColor(currentColor)
         //  when button click -> pick color
         pickColor.setOnClickListener {
 
@@ -111,7 +113,8 @@ class AddBusinessCardActivity : AppCompatActivity() {
                     currentColor = color
 
                     //  set background color to view result
-                    colorView.setBackgroundColor(color)
+                    //colorView.setBackgroundColor(color)
+                    binding.mcvContent.setCardBackgroundColor(color)
                 }
 
                 //  create dialog
@@ -141,6 +144,22 @@ class AddBusinessCardActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.label_show_success, Toast.LENGTH_SHORT ).show()
 
             finish()
+        }
+
+        binding.etName?.doOnTextChanged { text, _, _, _ ->
+            binding.tvNome?.text = text
+        }
+
+        binding.etTelefone?.doOnTextChanged { text, _, _, _ ->
+            binding.tvTelefone?.text = text
+        }
+
+        binding.etEmail?.doOnTextChanged { text, _, _, _ ->
+            binding.tvEmail?.text = text
+        }
+
+        binding.etEmpresa?.doOnTextChanged { text, _, _, _ ->
+            binding.tvNomeEmpresa?.text = text
         }
 
     }
